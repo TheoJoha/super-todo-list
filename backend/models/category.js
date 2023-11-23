@@ -1,4 +1,4 @@
-import mongoose from "../db/connection"
+import mongoose from "../db/connection.js"
 
 const categorySchema = new mongoose.Schema({
     todos: [{type: mongoose.Schema.Types.ObjectId, ref: "Todo"}],

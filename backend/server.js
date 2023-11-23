@@ -1,7 +1,7 @@
 // load dotenv
 import dotenv from "dotenv"
 dotenv.config()
-import middleware from "./utils/middleware"
+import middleware from "./utils/middleware.js"
 
 import express from "express"
 

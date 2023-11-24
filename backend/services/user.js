@@ -4,7 +4,6 @@ dotenv.config()
 import User from "../models/user.js"
 import Category from "../models/category.js"
 import Todo from "../models/todo.js"
-import mongoose from "../db/connection.js"
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
 
@@ -19,7 +18,9 @@ export default class UserService {
             const hash = await bcrypt.hash(user.password, salt)
             user.password = hash
             // return user
+            console.log(user)
             const newUser = await User.create(user)
+            console.log(newUser)
             return newUser
 
         } catch (err) {
@@ -63,6 +64,7 @@ export default class UserService {
             const decoded = jwt.verify(token, SECRET)
             // find user by id
             const user = await User.findById(decoded._id)
+            return user
         } catch (err) {
             console.log(err.message)
         }
